@@ -1,0 +1,211 @@
+[
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"11-Oct-1998",
+    "endDate":"14-Oct-1998",
+    "visitDuration":3,
+    "visitCountry":"Singapore",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":"30-Jun-1998"
+  },
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"16-Nov-1998",
+    "endDate":"19-Nov-1998",
+    "visitDuration":3,
+    "visitCountry":"Malaysia",
+    "visitPurpose":"Summit",
+    "visitDetails":"APEC Meeting",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"14-Dec-1998",
+    "endDate":"18-Dec-1998",
+    "visitDuration":4,
+    "visitCountry":"Vietnam",
+    "visitPurpose":"State Visit/Summit",
+    "visitDetails":"ASEAN Summit",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"18-Dec-1998",
+    "endDate":"20-Dec-1998",
+    "visitDuration":2,
+    "visitCountry":"Thailand",
+    "visitPurpose":"Official Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"16-May-1999",
+    "endDate":"19-May-1999",
+    "visitDuration":3,
+    "visitCountry":"Hong Kong",
+    "visitPurpose":"Working Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"2-Jun-1999",
+    "endDate":"6-Jun-1999",
+    "visitDuration":4,
+    "visitCountry":"Japan",
+    "visitPurpose":"Working Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"6-Jun-1999",
+    "endDate":"9-Jun-1999",
+    "visitDuration":3,
+    "visitCountry":"Republic of Korea",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"17-Aug-1999",
+    "endDate":"18-Aug-1999",
+    "visitDuration":1,
+    "visitCountry":"Brunei Darussalam",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"10-Sep-1999",
+    "endDate":"18-Sep-1999",
+    "visitDuration":8,
+    "visitCountry":"Chile",
+    "visitPurpose":"State Visit/Summit ",
+    "visitDetails":"APEC Summit",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"18-Sep-1999",
+    "endDate":"22-Sep-1999",
+    "visitDuration":4,
+    "visitCountry":"Argentina",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"22-Sep-1999",
+    "endDate":"23-Sep-1999",
+    "visitDuration":1,
+    "visitCountry":"USA",
+    "visitPurpose":"Private Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"11-Feb-2000",
+    "endDate":"13-Feb-2000",
+    "visitDuration":2,
+    "visitCountry":"Thailand",
+    "visitPurpose":"Summit",
+    "visitDetails":"UNCTAD conference",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"13-Feb-2000",
+    "endDate":"14-Feb-2000",
+    "visitDuration":1,
+    "visitCountry":"Hong Kong",
+    "visitPurpose":"Private Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"16-May-2000",
+    "endDate":"20-May-2000",
+    "visitDuration":4,
+    "visitCountry":"China",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"6-Jun-2000",
+    "endDate":"9-Jun-2000",
+    "visitDuration":3,
+    "visitCountry":"Japan",
+    "visitPurpose":"Official Visit",
+    "visitDetails":"Funeral Ceremony of the Late Prime Minister Keizo Obuchi",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"24-Jul-2000",
+    "endDate":"4-Aug-2000",
+    "visitDuration":11,
+    "visitCountry":"USA",
+    "visitPurpose":"Official Visit/Working Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"4-Sep-2000",
+    "endDate":"12-Sep-2000",
+    "visitDuration":8,
+    "visitCountry":"USA",
+    "visitPurpose":"Working Visit/Summit ",
+    "visitDetails":"UN Millennium Summit",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"15-Nov-2000",
+    "endDate":"16-Nov-2000",
+    "visitDuration":1,
+    "visitCountry":"Brunei Darussalam",
+    "visitPurpose":"Summit",
+    "visitDetails":"APEC Meeting",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Joseph Estrada",
+    "startDate":"23-Nov-2000",
+    "endDate":"25-Nov-2000",
+    "visitDuration":2,
+    "visitCountry":"Singapore",
+    "visitPurpose":"Summit",
+    "visitDetails":"ASEAN Informal Summit",
+    "visitNotes":"",
+    "scale":"20-Jan-2001"
+  }
+]

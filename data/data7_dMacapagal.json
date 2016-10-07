@@ -1,0 +1,134 @@
+[
+  {
+    "presName":"Diosdado Macapagal",
+    "startDate":"1-Jul-1962",
+    "endDate":"5-Jul-1962",
+    "visitDuration":4,
+    "visitCountry":"Spain",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":"30-Dec-1961"
+  },
+  {
+    "presName":"Diosdado Macapagal",
+    "startDate":"6-Jul-1962",
+    "endDate":"11-Jul-1962",
+    "visitDuration":5,
+    "visitCountry":"Italy",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Diosdado Macapagal",
+    "startDate":"11-Jul-1962",
+    "endDate":"25-Jul-1962",
+    "visitDuration":14,
+    "visitCountry":"Pakistan",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Diosdado Macapagal",
+    "startDate":"24-Nov-1963",
+    "endDate":"6-Dec-1963",
+    "visitDuration":12,
+    "visitCountry":"USA",
+    "visitPurpose":"Official Visit",
+    "visitDetails":"JFK funeral rites",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Diosdado Macapagal",
+    "startDate":"7-Dec-1963",
+    "endDate":"8-Dec-1963",
+    "visitDuration":1,
+    "visitCountry":"Liberia",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"only single date available",
+    "scale":""
+  },
+  {
+    "presName":"Diosdado Macapagal",
+    "startDate":"8-Dec-1963",
+    "endDate":"10-Dec-1963",
+    "visitDuration":2,
+    "visitCountry":"Tanganyika",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Diosdado Macapagal",
+    "startDate":"12-Dec-1963",
+    "endDate":"14-Dec-1963",
+    "visitDuration":2,
+    "visitCountry":"Madagascar (Malagasy Republic)",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Diosdado Macapagal",
+    "startDate":"15-Dec-1963",
+    "endDate":"16-Dec-1963",
+    "visitDuration":1,
+    "visitCountry":"Thailand",
+    "visitPurpose":"Official Visit",
+    "visitDetails":"Pay respects to late Prime Minister Sarit Thanarat",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Diosdado Macapagal",
+    "startDate":"8-Feb-1964",
+    "endDate":"13-Feb-1964",
+    "visitDuration":5,
+    "visitCountry":"Cambodia",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Diosdado Macapagal",
+    "startDate":"22-Feb-1964",
+    "endDate":"27-Feb-1964",
+    "visitDuration":5,
+    "visitCountry":"Indonesia",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Diosdado Macapagal",
+    "startDate":"13-Jun-1964",
+    "endDate":"22-Jun-1964",
+    "visitDuration":9,
+    "visitCountry":"Japan",
+    "visitPurpose":"Summit ",
+    "visitDetails":"MAPHILINDO Summit",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Diosdado Macapagal",
+    "startDate":"3-Oct-1964",
+    "endDate":"16-Oct-1964",
+    "visitDuration":13,
+    "visitCountry":"USA",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":"30-Dec-1965"
+  }
+]

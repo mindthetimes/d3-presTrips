@@ -1,0 +1,156 @@
+[
+  {
+    "presName":"Manuel Quezon",
+    "startDate":"8-Dec-1936",
+    "endDate":"15-Dec-1936",
+    "visitDuration":7,
+    "visitCountry":"China",
+    "visitPurpose":"Private Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":"15-Nov-1935"
+  },
+  {
+    "presName":"Manuel Quezon",
+    "startDate":"23-Jan-1937",
+    "endDate":"24-Jan-1937",
+    "visitDuration":1,
+    "visitCountry":"China",
+    "visitPurpose":"Official Visit",
+    "visitDetails":"",
+    "visitNotes":"only single date available",
+    "scale":""
+  },
+  {
+    "presName":"Manuel Quezon",
+    "startDate":"31-Jan-1937",
+    "endDate":"2-Feb-1937",
+    "visitDuration":2,
+    "visitCountry":"Japan",
+    "visitPurpose":"Official Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Manuel Quezon",
+    "startDate":"26-Feb-1937",
+    "endDate":"7-Apr-1937",
+    "visitDuration":40,
+    "visitCountry":"USA",
+    "visitPurpose":"Official Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Manuel Quezon",
+    "startDate":"8-Apr-1937",
+    "endDate":"13-Apr-1937",
+    "visitDuration":5,
+    "visitCountry":"Mexico",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Manuel Quezon",
+    "startDate":"6-May-1937",
+    "endDate":"20-May-1937",
+    "visitDuration":14,
+    "visitCountry":"France",
+    "visitPurpose":"Official Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Manuel Quezon",
+    "startDate":"22-May-1937",
+    "endDate":"29-Jun-1937",
+    "visitDuration":38,
+    "visitCountry":"USA",
+    "visitPurpose":"Official Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Manuel Quezon",
+    "startDate":"30-Jun-1937",
+    "endDate":"1-Jul-1937",
+    "visitDuration":1,
+    "visitCountry":"Cuba",
+    "visitPurpose":"Official Visit",
+    "visitDetails":"",
+    "visitNotes":"only single date available",
+    "scale":""
+  },
+  {
+    "presName":"Manuel Quezon",
+    "startDate":"10-Aug-1937",
+    "endDate":"11-Aug-1937",
+    "visitDuration":1,
+    "visitCountry":"USA",
+    "visitPurpose":"Official Visit",
+    "visitDetails":"",
+    "visitNotes":"only single date available",
+    "scale":""
+  },
+  {
+    "presName":"Manuel Quezon",
+    "startDate":"30-Apr-1938",
+    "endDate":"7-May-1938",
+    "visitDuration":7,
+    "visitCountry":"Hong Kong",
+    "visitPurpose":"Private Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Manuel Quezon",
+    "startDate":"29-Jun-1938",
+    "endDate":"10-Jul-1938",
+    "visitDuration":11,
+    "visitCountry":"Japan",
+    "visitPurpose":"Private Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Manuel Quezon",
+    "startDate":"6-Aug-1938",
+    "endDate":"7-Aug-1938",
+    "visitDuration":1,
+    "visitCountry":"Japan",
+    "visitPurpose":"Official Visit",
+    "visitDetails":"",
+    "visitNotes":"only single date available",
+    "scale":""
+  },
+  {
+    "presName":"Manuel Quezon",
+    "startDate":"26-Mar-1942",
+    "endDate":"20-Apr-1942",
+    "visitDuration":25,
+    "visitCountry":"Australia",
+    "visitPurpose":"Flown to Australia for President's safety",
+    "visitDetails":"(During World War II)",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Manuel Quezon",
+    "startDate":"8-May-1942",
+    "endDate":"9-May-1942",
+    "visitDuration":1,
+    "visitCountry":"USA",
+    "visitPurpose":"Established the Philippine Commonwealth government-in-exile",
+    "visitDetails":"(During World War II)",
+    "visitNotes":"only single date available",
+    "scale":"31-Dec-1942"
+  }
+]

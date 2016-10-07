@@ -1,0 +1,167 @@
+[
+  {
+    "presName":"Corazon Aquino",
+    "startDate":"24-Aug-1986",
+    "endDate":"27-Aug-1986",
+    "visitDuration":3,
+    "visitCountry":"Indonesia",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":"25-Feb-1986"
+  },
+  {
+    "presName":"Corazon Aquino",
+    "startDate":"24-Aug-1986",
+    "endDate":"27-Aug-1986",
+    "visitDuration":3,
+    "visitCountry":"Singapore",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Corazon Aquino",
+    "startDate":"15-Sep-1986",
+    "endDate":"24-Sep-1986",
+    "visitDuration":9,
+    "visitCountry":"USA",
+    "visitPurpose":"Official Visit/Working Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Corazon Aquino",
+    "startDate":"10-Nov-1986",
+    "endDate":"13-Nov-1986",
+    "visitDuration":3,
+    "visitCountry":"Japan",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Corazon Aquino",
+    "startDate":"29-Apr-1987",
+    "endDate":"30-Apr-1987",
+    "visitDuration":1,
+    "visitCountry":"Brunei Darussalam",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"only single date available",
+    "scale":""
+  },
+  {
+    "presName":"Corazon Aquino",
+    "startDate":"14-Apr-1988",
+    "endDate":"15-Apr-1988",
+    "visitDuration":1,
+    "visitCountry":"China",
+    "visitPurpose":"Official Visit",
+    "visitDetails":"",
+    "visitNotes":"only single date available",
+    "scale":""
+  },
+  {
+    "presName":"Corazon Aquino",
+    "startDate":"13-Jun-1988",
+    "endDate":"15-Jun-1988",
+    "visitDuration":2,
+    "visitCountry":"Switzerland",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Corazon Aquino",
+    "startDate":"16-Jun-1988",
+    "endDate":"17-Jun-1988",
+    "visitDuration":1,
+    "visitCountry":"Italy",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Corazon Aquino",
+    "startDate":"17-Jun-1988",
+    "endDate":"18-Jun-1988",
+    "visitDuration":1,
+    "visitCountry":"Vatican",
+    "visitPurpose":"Official Visit/Summit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Corazon Aquino",
+    "startDate":"9-Jul-1989",
+    "endDate":"11-Jul-1989",
+    "visitDuration":2,
+    "visitCountry":"Germany",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Corazon Aquino",
+    "startDate":"12-Jul-1989",
+    "endDate":"13-Jul-1989",
+    "visitDuration":1,
+    "visitCountry":"France",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Corazon Aquino",
+    "startDate":"13-Jul-1989",
+    "endDate":"14-Jul-1989",
+    "visitDuration":1,
+    "visitCountry":"Belgium",
+    "visitPurpose":"Working Visit",
+    "visitDetails":"",
+    "visitNotes":"only single date available",
+    "scale":""
+  },
+  {
+    "presName":"Corazon Aquino",
+    "startDate":"6-Nov-1989",
+    "endDate":"7-Nov-1989",
+    "visitDuration":1,
+    "visitCountry":"Canada",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"only single date available",
+    "scale":""
+  },
+  {
+    "presName":"Corazon Aquino",
+    "startDate":"7-Nov-1989",
+    "endDate":"10-Nov-1989",
+    "visitDuration":3,
+    "visitCountry":"USA",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Corazon Aquino",
+    "startDate":"27-Jan-1992",
+    "endDate":"28-Jan-1992",
+    "visitDuration":1,
+    "visitCountry":"Singapore",
+    "visitPurpose":"Summit",
+    "visitDetails":"ASEAN Summit",
+    "visitNotes":"",
+    "scale":"30-Jun-1992"
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "presName":"Carlos Garcia",
+    "startDate":"18-Jun-1958",
+    "endDate":"3-Jul-1958",
+    "visitDuration":15,
+    "visitCountry":"USA",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":"23-Mar-1957"
+  },
+  {
+    "presName":"Carlos Garcia",
+    "startDate":"1-Dec-1958",
+    "endDate":"6-Dec-1958",
+    "visitDuration":5,
+    "visitCountry":"Japan",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Carlos Garcia",
+    "startDate":"22-Apr-1958",
+    "endDate":"26-Apr-1958",
+    "visitDuration":4,
+    "visitCountry":"South Vietnam",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Carlos Garcia",
+    "startDate":"8-Feb-1961",
+    "endDate":"11-Feb-1961",
+    "visitDuration":3,
+    "visitCountry":"Malaya",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":"30-Dec-1961"
+  }
+]

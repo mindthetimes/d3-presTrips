@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Presidential Trips: Data from data.gov.ph</title>
+        <script type="text/javascript" src="src/d3.js"></script> <!--D3-->
+        <script type="text/javascript" src="src/d3.tip.v0.6.3.js"></script> <!--tooltips -->
+        <script type="text/javascript" src="src/jquery.js"></script> <!--bootstrap req--> 
+        <script type="text/javascript" src="src/bootstrap.min.js"></script> <!--responsive-->
+        <link rel="stylesheet" href="src/bootstrap.min.css"> <!--bootstrap css-->
+        
+        <!-- ONLINE MODE -->
+        <!-- 
+            <script type="text/javascript" src="src/d3.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script> 
+            <script type="text/javascript" src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script> 
+            <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script> 
+            <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> 
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        -->
+
+        <style type="text/css">
+            .axis path,
+            .axis line {
+                fill: none;
+                stroke: grey;
+                stroke-width: 2;
+                shape-rendering: crispEdges;
+            }
+
+            g text {
+                font-family: 'Roboto', sans-serif;
+                font-size: 14px;
+            }
+
+            #chart1, #chart2, #chart3, #chart4, #chart5, #chart6, #chart7, #chart8, #chart9, #chart10, #chart11, #chart12, #chart13, #chart14 {
+                overflow-x: auto;
+                overflow-y: hidden;
+                max-width: 768px;
+                max-height: 170px;
+                position: relative;
+            }
+
+            #photo {
+                position: relative;
+                top: 20px;
+                margin-bottom: 20px;
+                border: 7px solid #60c8f1;
+                border-radius: 100px;
+                z-index: 1;
+            }
+            
+            .d3-tip {
+                font-family: 'Roboto', sans-serif;
+                font-size: 12px;
+                font-weight: 700;
+                position: absolute;
+                z-index: 10;  
+                padding: 2px;              
+                border-radius: 8px;
+            }
+
+            h1, h3 {
+                font-family: 'Roboto', sans-serif;
+                font-weight: bold;
+                color: #1d74b3;
+                position: relative;
+                left: 20px;
+            }
+
+            ::-webkit-scrollbar-track {
+                  background-color: #b46868;
+            } /* the new scrollbar will have a flat appearance with the set background color */
+             
+            ::-webkit-scrollbar-thumb {
+                  background-color: rgba(0, 0, 0, 0.2); 
+            } /* this will style the thumb, ignoring the track */
+             
+            ::-webkit-scrollbar-button {
+                  background-color: #7c2929;
+            } /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+             
+            ::-webkit-scrollbar-corner {
+                  background-color: black;
+            } /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
+            
+            @media screen and (max-width: 768px) {
+                .col-sm-1 {
+                  text-align: center;
+                }
+                h1, h3 {
+                  text-align: center;
+                  left: 0px;
+                  }
+            }
+
+            
+        </style>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-sm-12"><h3 id="title">Presidential Trips - Data from data.gov.ph</h1></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"><img id="photo" src="img/mQuezon.png" alt="Manuel Quezon" style="width:100px;height:100px;"></div>
+            <div class="col-sm-11" id="chart1"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"><img id="photo" src="img/jLaurel.png" alt="Jose Laurel" style="width:100px;height:100px;"></div>
+            <div class="col-sm-11" id="chart2"></div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-sm-1"><img id="rMagsaysay" src="rMagsaysay.png" alt="Ramon Magsaysay" style="width:100px;height:100px;"></div>
+            <div class="col-sm-7" id="chart3"></div> 
+        </div> -->
+        <div class="row">
+            <div class="col-sm-1"><img id="photo" src="img/sOsmena.png" alt="Sergio Osmena" style="width:100px;height:100px;"></div>
+            <div class="col-sm-11" id="chart4"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"><img id="photo" src="img/mRoxas.png" alt="Manuel Roxas" style="width:100px;height:100px;"></div>
+            <div class="col-sm-11" id="chart5"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"><img id="photo" src="img/eQuirino.png" alt="Elpidio Quirino" style="width:100px;height:100px;"></div>
+            <div class="col-sm-11" id="chart6"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"><img id="photo" src="img/cGarcia.png" alt="Carlos Garcia" style="width:100px;height:100px;"></div>
+            <div class="col-sm-11" id="chart7"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"><img id="photo" src="img/dMacapagal.png" alt="Diosdado Macapagal" style="width:100px;height:100px;"></div>
+            <div class="col-sm-11" id="chart8"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"><img id="photo" src="img/fMarcos.png" alt="Ferdinand Marcos" style="width:100px;height:100px;"></div>
+            <div class="col-sm-11" id="chart9"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"><img id="photo" src="img/cAquino.png" alt="Corazon Aquino" style="width:100px;height:100px;"></div>
+            <div class="col-sm-11" id="chart10"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"><img id="photo" src="img/fRamos.png" alt="Fidel Ramos" style="width:100px;height:100px;"></div>
+            <div class="col-sm-11" id="chart11"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"><img id="photo" src="img/jEstrada.png" alt="Joseph Estrada" style="width:100px;height:100px;"></div>
+            <div class="col-sm-11" id="chart12"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"><img id="photo" src="img/gArroyo.png" alt="Gloria Arroyo" style="width:100px;height:100px;"></div>
+            <div class="col-sm-11" id="chart13"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"><img id="photo" src="img/bAquino.png" alt="Benigno Aquino" style="width:100px;height:100px;"></div>
+            <div class="col-sm-11" id="chart14"></div>
+        </div>
+           
+        <script type="text/javascript">
+            /* global code */
+
+            // set the time format 
+            var parseDate = d3.time.format("%d-%b-%Y").parse;
+            var tooltipDate = d3.time.format("%b %d %Y");
+
+            // define d3.tip tooltip (external script - d3.tip.js)
+            var tip = d3.tip()
+                .attr('class', 'd3-tip')
+                .offset([20, 0])
+                .html(function(d) {
+                    return d.visitCountry.toUpperCase() + "<br/> " + tooltipDate(d.startDate) + " - " + tooltipDate(d.endDate) + "<br/> " + d.visitDuration + " day/s <br/>" + d.visitPurpose + "<br/> " + d.visitDetails;
+                })
+                .direction('e')
+                .style('position', 'absolute')
+                .style('padding', '6px 10px 6px 10px')
+                .style('background', '#f8f8b8');
+                
+            // colors for each grouped country
+            var returnColor;
+            var colorRegion = { 
+                Africa: [ "Asmeria", "Angola", "Benin", "Botswana", "Burkina", "Burundi", "Cameroon", "Cape Verde", "Chad", "Comoros", "Congo",
+                    "Djibouti", "Egypt", "Ethiopia", "Gabon", "Ghana", "Guinea", "Ivory Coast", "Kenya", "Lesotho", "Liberia", "Libya", "Madagascar",
+                    "Malawi", "Mali", "Mauritania", "Morocco", "Mozambique", "Namibia", "Nigeria", "Rwanda", "Sierra Leone", "Somalia", "South Africa",
+                    "Sudan", "Tanzania", "Uganda", "Zambia", "Zimbabwe", "Tanganyika", "Madagascar (Malagasy Republic)", "Kenya (East Africa)",
+                    "Equatorial Guinea" ],
+                Asia: [ "Afghanistan", "Bahrain", "Bangladesh", "Bhutan", "Brunei", "Brunei Darussalam", "Myanmar", "Burma", "Cambodia",
+                    "China", "East Timor", "Hong Kong", "India", "Indonesia", "Iran", "Iraq", "Israel", "Japan", "Jordan", "Kazakhstan",
+                    "North Korea", "South Korea", "Republic of Korea",
+                    "Kuwait", "Kyrgyzstan", "Laos", "Lebanon", "Malaysia", "Maldives", "Mongolia", "Nepal", "Oman", "Pakistan", "Qatar", "Russia",
+                    "Saudi Arabia", "Singapore", "Sri Lanka", "Syria", "Taiwan", "Tajikistan", "Thailand", "Turkey", "Turkmenistan",
+                    "United Arab Emirates", "UAE", "Uzbekistan", "Vietnam", "Yemen", "South Vietnam", "Malaya", "Russia (for. USSR)",
+                    "Lao People's Democratic Republic" ],
+                Europe: [ "Albania", "Andorra", "Armenia", "Austria", "Azerbaijan", "Belarus", "Besmium", "Busmaria", "Croatia", "Cyprus",
+                    "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Georgia", "Germany", "Greece", "Hungary", "Iceland", "Ireland",
+                    "Italy", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands",
+                    "Norway", "Poland", "Portugal", "Romania", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland",
+                    "Ukraine", "United Kingdom", "Vatican City", "Vatican", "UK", "Amsterdam", "CzechRepublic"],
+                northAmerica: [ "Bahamas", "Barbados", "Belize", "Canada", "Costa Rica", "Cuba", "Dominican Republic", "El Salvador", "Grenada",
+                    "Guatemala", "Haiti", "Honduras", "Jamaica", "Mexico", "Nicaragua", "Panama", "Saint Lucia", "Trinidad and Tobago", "USA",
+                    "United States" ],
+                Oceania: [ "Australia", "Fiji", "Kiribati", "Marshall Islands", "Micronesia", "Nauru", "New Zealand", "Palau", "Papua New Guinea",
+                    "Samoa", "Solomon Islands", "Tonga", "Tuvalu", "Vanuatu", "North Borneo"],
+                southAmerica: [ "Argentina", "Bolivia", "Brazil", "Chile", "Colombia", "Columbia", "Ecuador", "Guyana", "Paraguay", "Peru",
+                    "Suriname", "Uruguay", "Venezuela" ]
+            };
+
+            // set the width and height of each svg. set the margins.
+            var w = 5000; 
+            var h = 110;
+            var margin = { top: 20, left: 30, right: 30, bottom: 20 };
+
+            /* global code end */
+           
+            /* mQuezonSvg code */
+
+                // add the svg canvas
+                var mQuezonSvg = d3.select('#chart1').append('svg')
+                    .attr('width', w)
+                    .attr('height', h)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                // place the tooltip
+                    d3.select('svg')
+                    .style('background-color', "#FAFAFA");
+                    mQuezonSvg.call(tip);
+
+                // call the data
+                var mQuezonData = d3.json("data/data1_mQuezon.json", function(error, mQuezonData) {
+                    if (error) throw error;
+                        mQuezonData.forEach(function(d) {  // make date format readable
+                            d.startDate = parseDate(d.startDate); 
+                            d.endDate = parseDate(d.endDate); 
+                            d.scale = parseDate(d.scale);
+                    });
+                    
+                    // define scale and axes
+                    var mQScale = d3.time.scale()
+                        .range([0, w - margin.left - margin.right])
+                        .domain(d3.extent(mQuezonData, function(d) { return d.scale; }));   // start date to last start date 
+                   
+                    var mQAxis = d3.svg.axis()
+                        .scale(mQScale)
+                        .orient("bottom")
+                        .ticks(20)
+                        .tickFormat(d3.time.format("%b-%Y"))
+                        .tickSize(4)
+                        .tickPadding(3); 
+
+                    // build the chart
+                    var chart = mQuezonSvg.selectAll('rect')
+                        .data(mQuezonData)
+                        .enter()
+                        .append('rect')
+                        .attr("width", function(d) {return mQScale(d.endDate) - mQScale(d.startDate);})
+                        .attr('height', 71)  
+                        .attr('y', h/2.7 - margin.top - margin.bottom) // centers circle
+                        .attr('x', function(d,i) { mQScale(d.startDate); return mQScale(d.startDate)} )
+                        .attr('rx', 150 + "px")
+                        .attr('ry', 0 + "px")
+                        .attr("opacity", 0.95)
+                        .style("fill", function(d) {
+                            if (colorRegion.Africa.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#edc951"; // yellow
+                            }
+                            else if (colorRegion.Asia.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#cc333f"; // red
+                            }
+                            else if (colorRegion.Europe.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#27a15a"; // green
+                            }
+                            else if (colorRegion.northAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#00a0b0"; // teal
+                            }
+                            else if (colorRegion.Oceania.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#eb6841"; // orange
+                            }
+                            else if (colorRegion.southAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#6a4a3c"; // brown
+                            }
+                            else {
+                                returnColor = "black";
+                            }
+                            return returnColor;
+                        })
+
+                    // add mouse events
+                        .on('mouseover', tip.show)
+                        .on("mouseout", tip.hide);
+
+                    // add the x axis
+                    mQuezonSvg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0, 72)")
+                        .call(mQAxis);
+                });
+
+            /* mQuezonSvg code end */
+
+            /* jLaurelSvg code */
+
+                // add the svg canvas
+                var jLaurelSvg = d3.select('#chart2').append('svg')
+                    .attr('width', w)
+                    .attr('height', h)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                // place the tooltip
+                    d3.select('svg')
+                    .style('background-color', "#FAFAFA");
+                    jLaurelSvg.call(tip);
+
+                // call the data
+                var jLaurelData = d3.json("data/data2_jLaurel.json", function(error, jLaurelData) {
+                    if (error) throw error;
+                        jLaurelData.forEach(function(d) { // make date format readable
+                            d.startDate = parseDate(d.startDate); 
+                            d.endDate = parseDate(d.endDate); 
+                            d.scale = parseDate(d.scale);
+                    });
+                    
+                    // define scale and axes
+                    var jLScale = d3.time.scale()
+                        .range([0, w - margin.left - margin.right])
+                        .domain(d3.extent(jLaurelData, function(d) { return d.scale; }));   // start date to last start date 
+                   
+                    var jLAxis = d3.svg.axis()
+                        .scale(jLScale)
+                        .orient("bottom")
+                        .ticks(20)
+                        .tickFormat(d3.time.format("%b-%Y"))
+                        .tickSize(4)
+                        .tickPadding(3); 
+
+                    // build the chart
+                    var chart = jLaurelSvg.selectAll('rect')
+                        .data(jLaurelData)
+                        .enter()
+                        .append('rect')
+                        .attr("width", function(d) {return jLScale(d.endDate) - jLScale(d.startDate);})
+                        .attr('height', 71)  
+                        .attr('y', h/2.7 - margin.top - margin.bottom) // centers circle
+                        .attr('x', function(d,i) { jLScale(d.startDate); return jLScale(d.startDate)} )
+                        .attr('rx', 150 + "px")
+                        .attr('ry', 0 + "px")
+                        .attr("opacity", 0.95)
+                        .style("fill", function(d) {
+                            if (colorRegion.Africa.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#edc951"; // yellow
+                            }
+                            else if (colorRegion.Asia.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#cc333f"; // red
+                            }
+                            else if (colorRegion.Europe.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#27a15a"; // green
+                            }
+                            else if (colorRegion.northAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#00a0b0"; // teal
+                            }
+                            else if (colorRegion.Oceania.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#eb6841"; // orange
+                            }
+                            else if (colorRegion.southAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#6a4a3c"; // brown
+                            }
+                            else {
+                                returnColor = "black";
+                            }
+                            return returnColor;
+                        })
+
+                    // add mouse events
+                        .on('mouseover', tip.show)
+                        .on("mouseout", tip.hide);
+
+                    // add the x axis
+                    jLaurelSvg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0, 72)")
+                        .call(jLAxis);
+                });
+
+            /* jLaurelSvg code end */
+
+            /* rMagsaysay no data of country leave */
+
+            /* sOsmenaSvg code */
+
+                // add the svg canvas
+                var sOsmenaSvg = d3.select('#chart4').append('svg')
+                    .attr('width', w)
+                    .attr('height', h)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                // place the tooltip
+                    d3.select('svg')
+                    .style('background-color', "#FAFAFA");
+                    sOsmenaSvg.call(tip);
+
+                // call the data
+                var sOsmenaData = d3.json("data/data3_sOsmena.json", function(error, sOsmenaData) {
+                    if (error) throw error;
+                        sOsmenaData.forEach(function(d) { // make date format readable
+                            d.startDate = parseDate(d.startDate); 
+                            d.endDate = parseDate(d.endDate); 
+                            d.scale = parseDate(d.scale);
+                    });
+                    
+                    // define scale and axes
+                    var sOScale = d3.time.scale()
+                        .range([0, w - margin.left - margin.right])
+                        .domain(d3.extent(sOsmenaData, function(d) { return d.scale; }));   // start date to last start date 
+                   
+                    var sOAxis = d3.svg.axis()
+                        .scale(sOScale)
+                        .orient("bottom")
+                        .ticks(20)
+                        .tickFormat(d3.time.format("%b-%Y"))
+                        .tickSize(4)
+                        .tickPadding(3); 
+
+                    // build the chart
+                    var chart = sOsmenaSvg.selectAll('rect')
+                        .data(sOsmenaData)
+                        .enter()
+                        .append('rect')
+                        .attr("width", function(d) {return sOScale(d.endDate) - sOScale(d.startDate);})
+                        .attr('height', 71)  
+                        .attr('y', h/2.7 - margin.top - margin.bottom) // centers circle
+                        .attr('x', function(d,i) { sOScale(d.startDate); return sOScale(d.startDate)} )
+                        .attr('rx', 150 + "px")
+                        .attr('ry', 0 + "px")
+                        .attr("opacity", 0.95)
+                        .style("fill", function(d) {
+                            if (colorRegion.Africa.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#edc951"; // yellow
+                            }
+                            else if (colorRegion.Asia.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#cc333f"; // red
+                            }
+                            else if (colorRegion.Europe.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#27a15a"; // green
+                            }
+                            else if (colorRegion.northAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#00a0b0"; // teal
+                            }
+                            else if (colorRegion.Oceania.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#eb6841"; // orange
+                            }
+                            else if (colorRegion.southAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#6a4a3c"; // brown
+                            }
+                            else {
+                                returnColor = "black";
+                            }
+                            return returnColor;
+                        })
+
+                    // add mouse events
+                        .on('mouseover', tip.show)
+                        .on("mouseout", tip.hide);
+
+                    // add the x axis
+                    sOsmenaSvg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0, 72)")
+                        .call(sOAxis);
+                });
+
+            /* sOsmenaSvg code end */
+
+            /* mRoxasSvg code */
+
+                // add the svg canvas
+                var mRoxasSvg = d3.select('#chart5').append('svg')
+                    .attr('width', w)
+                    .attr('height', h)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                // place the tooltip
+                    d3.select('svg')
+                    .style('background-color', "#FAFAFA");
+                    mRoxasSvg.call(tip);
+
+                // call the data
+                var mRoxasData = d3.json("data/data4_mRoxas.json", function(error, mRoxasData) {
+                    if (error) throw error;
+                        mRoxasData.forEach(function(d) { // make date format readable
+                            d.startDate = parseDate(d.startDate); 
+                            d.endDate = parseDate(d.endDate); 
+                            d.scale = parseDate(d.scale);
+                    });
+                    
+                    // define scale and axes
+                    var mRScale = d3.time.scale()
+                        .range([0, w - margin.left - margin.right])
+                        .domain(d3.extent(mRoxasData, function(d) { return d.scale; }));   // start date to last start date 
+                   
+                    var mRAxis = d3.svg.axis()
+                        .scale(mRScale)
+                        .orient("bottom")
+                        .ticks(20)
+                        .tickFormat(d3.time.format("%b-%Y"))
+                        .tickSize(4)
+                        .tickPadding(3); 
+
+                    // build the chart
+                    var chart = mRoxasSvg.selectAll('rect')
+                        .data(mRoxasData)
+                        .enter()
+                        .append('rect')
+                        .attr("width", function(d) {return mRScale(d.endDate) - mRScale(d.startDate);})
+                        .attr('height', 71)  
+                        .attr('y', h/2.7 - margin.top - margin.bottom) // centers circle
+                        .attr('x', function(d,i) { mRScale(d.startDate); return mRScale(d.startDate)} )
+                        .attr('rx', 150 + "px")
+                        .attr('ry', 0 + "px")
+                        .attr("opacity", 0.95)
+                        .style("fill", function(d) {
+                            if (colorRegion.Africa.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#edc951"; // yellow
+                            }
+                            else if (colorRegion.Asia.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#cc333f"; // red
+                            }
+                            else if (colorRegion.Europe.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#27a15a"; // green
+                            }
+                            else if (colorRegion.northAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#00a0b0"; // teal
+                            }
+                            else if (colorRegion.Oceania.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#eb6841"; // orange
+                            }
+                            else if (colorRegion.southAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#6a4a3c"; // brown
+                            }
+                            else {
+                                returnColor = "black";
+                            }
+                            return returnColor;
+                        })
+
+                    // add mouse events
+                        .on('mouseover', tip.show)
+                        .on("mouseout", tip.hide);
+
+                    // add the x axis
+                    mRoxasSvg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0, 72)")
+                        .call(mRAxis);
+                });
+
+            /* mRoxasSvg code end */
+
+            /* eQuirinoSvg code */
+
+                // add the svg canvas
+                var eQuirinoSvg = d3.select('#chart6').append('svg')
+                    .attr('width', w)
+                    .attr('height', h)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                // place the tooltip
+                    d3.select('svg')
+                    .style('background-color', "#FAFAFA");
+                eQuirinoSvg.call(tip);
+
+                // call the data
+                var eQuirinoData = d3.json("data/data5_eQuirino.json", function(error, eQuirinoData) {
+                    if (error) throw error;
+                        eQuirinoData.forEach(function(d) { // make date format readable
+                            d.startDate = parseDate(d.startDate); 
+                            d.endDate = parseDate(d.endDate); 
+                            d.scale = parseDate(d.scale);
+                    });
+                    
+                    // define scale and axes
+                    var eQScale = d3.time.scale()
+                        .range([0, w - margin.left - margin.right])
+                        .domain(d3.extent(eQuirinoData, function(d) { return d.scale; }));   // start date to last start date 
+                   
+                    var eQAxis = d3.svg.axis()
+                        .scale(eQScale)
+                        .orient("bottom")
+                        .ticks(20)
+                        .tickFormat(d3.time.format("%b-%Y"))
+                        .tickSize(4)
+                        .tickPadding(3); 
+
+                    // build the chart
+                    var chart = eQuirinoSvg.selectAll('rect')
+                        .data(eQuirinoData)
+                        .enter()
+                        .append('rect')
+                        .attr("width", function(d) {return eQScale(d.endDate) - eQScale(d.startDate);})
+                        .attr('height', 71)  
+                        .attr('y', h/2.7 - margin.top - margin.bottom) // centers circle
+                        .attr('x', function(d,i) { eQScale(d.startDate); return eQScale(d.startDate)} )
+                        .attr('rx', 150 + "px")
+                        .attr('ry', 0 + "px")
+                        .attr("opacity", 0.95)
+                        .style("fill", function(d) {
+                            if (colorRegion.Africa.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#edc951"; // yellow
+                            }
+                            else if (colorRegion.Asia.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#cc333f"; // red
+                            }
+                            else if (colorRegion.Europe.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#27a15a"; // green
+                            }
+                            else if (colorRegion.northAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#00a0b0"; // teal
+                            }
+                            else if (colorRegion.Oceania.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#eb6841"; // orange
+                            }
+                            else if (colorRegion.southAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#6a4a3c"; // brown
+                            }
+                            else {
+                                returnColor = "black";
+                            }
+                            return returnColor;
+                        })
+
+                    // add mouse events
+                        .on('mouseover', tip.show)
+                        .on("mouseout", tip.hide);
+
+                    // add the x axis
+                    eQuirinoSvg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0, 72)")
+                        .call(eQAxis);
+                });
+
+            /* eQuirinoSvg code end */
+
+            /* cGarciaSvg code */
+
+                // add the svg canvas
+                var cGarciaSvg = d3.select('#chart7').append('svg')
+                    .attr('width', w)
+                    .attr('height', h)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                // place the tooltip
+                    d3.select('svg')
+                    .style('background-color', "#FAFAFA");
+                cGarciaSvg.call(tip);
+
+                // call the data
+                var cGarciaData = d3.json("data/data6_cGarcia.json", function(error, cGarciaData) {
+                    if (error) throw error;
+                        cGarciaData.forEach(function(d) { // make date format readable
+                            d.startDate = parseDate(d.startDate); 
+                            d.endDate = parseDate(d.endDate); 
+                            d.scale = parseDate(d.scale);
+                    });
+                    
+                    // define scale and axes
+                    var cGScale = d3.time.scale()
+                        .range([0, w - margin.left - margin.right])
+                        .domain(d3.extent(cGarciaData, function(d) { return d.scale; }));   // start date to last start date 
+                   
+                    var cGAxis = d3.svg.axis()
+                        .scale(cGScale)
+                        .orient("bottom")
+                        .ticks(20)
+                        .tickFormat(d3.time.format("%b-%Y"))
+                        .tickSize(4)
+                        .tickPadding(3); 
+
+                    // build the chart
+                    var chart = cGarciaSvg.selectAll('rect')
+                        .data(cGarciaData)
+                        .enter()
+                        .append('rect')
+                        .attr("width", function(d) {return cGScale(d.endDate) - cGScale(d.startDate);})
+                        .attr('height', 71)  
+                        .attr('y', h/2.7 - margin.top - margin.bottom) // centers circle
+                        .attr('x', function(d,i) { cGScale(d.startDate); return cGScale(d.startDate)} )
+                        .attr('rx', 150 + "px")
+                        .attr('ry', 0 + "px")
+                        .attr("opacity", 0.95)
+                        .style("fill", function(d) {
+                            if (colorRegion.Africa.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#edc951"; // yellow
+                            }
+                            else if (colorRegion.Asia.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#cc333f"; // red
+                            }
+                            else if (colorRegion.Europe.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#27a15a"; // green
+                            }
+                            else if (colorRegion.northAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#00a0b0"; // teal
+                            }
+                            else if (colorRegion.Oceania.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#eb6841"; // orange
+                            }
+                            else if (colorRegion.southAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#6a4a3c"; // brown
+                            }
+                            else {
+                                returnColor = "black";
+                            }
+                            return returnColor;
+                        })
+
+                    // add mouse events
+                        .on('mouseover', tip.show)
+                        .on("mouseout", tip.hide);
+
+                    // add the x axis
+                    cGarciaSvg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0, 72)")
+                        .call(cGAxis);
+                });
+
+            /* cGarciaSvg code end */
+
+            /* dMacapagalSvg code */
+
+                // add the svg canvas
+                var dMacapagalSvg = d3.select('#chart8').append('svg')
+                    .attr('width', w)
+                    .attr('height', h)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                // place the tooltip
+                    d3.select('svg')
+                    .style('background-color', "#FAFAFA");
+                dMacapagalSvg.call(tip);
+
+                // call the data
+                var dMacapagalData = d3.json("data/data7_dMacapagal.json", function(error, dMacapagalData) {
+                    if (error) throw error;
+                        dMacapagalData.forEach(function(d) { // make date format readable
+                            d.startDate = parseDate(d.startDate); 
+                            d.endDate = parseDate(d.endDate); 
+                            d.scale = parseDate(d.scale);
+                    });
+                    
+                    // define scale and axes
+                    var dMScale = d3.time.scale()
+                        .range([0, w - margin.left - margin.right])
+                        .domain(d3.extent(dMacapagalData, function(d) { return d.scale; }));   // start date to last start date 
+                   
+                    var dMAxis = d3.svg.axis()
+                        .scale(dMScale)
+                        .orient("bottom")
+                        .ticks(20)
+                        .tickFormat(d3.time.format("%b-%Y"))
+                        .tickSize(4)
+                        .tickPadding(3); 
+
+                    // build the chart
+                    var chart = dMacapagalSvg.selectAll('rect')
+                        .data(dMacapagalData)
+                        .enter()
+                        .append('rect')
+                        .attr("width", function(d) {return dMScale(d.endDate) - dMScale(d.startDate);})
+                        .attr('height', 71)  
+                        .attr('y', h/2.7 - margin.top - margin.bottom) // centers circle
+                        .attr('x', function(d,i) { dMScale(d.startDate); return dMScale(d.startDate)} )
+                        .attr('rx', 150 + "px")
+                        .attr('ry', 0 + "px")
+                        .attr("opacity", 0.95)
+                        .style("fill", function(d) {
+                            if (colorRegion.Africa.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#edc951"; // yellow
+                            }
+                            else if (colorRegion.Asia.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#cc333f"; // red
+                            }
+                            else if (colorRegion.Europe.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#27a15a"; // green
+                            }
+                            else if (colorRegion.northAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#00a0b0"; // teal
+                            }
+                            else if (colorRegion.Oceania.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#eb6841"; // orange
+                            }
+                            else if (colorRegion.southAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#6a4a3c"; // brown
+                            }
+                            else {
+                                returnColor = "black";
+                            }
+                            return returnColor;
+                        })
+
+                    // add mouse events
+                        .on('mouseover', tip.show)
+                        .on("mouseout", tip.hide);
+
+                    // add the x axis
+                    dMacapagalSvg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0, 72)")
+                        .call(dMAxis);
+                });
+
+            /* dMacapagalSvg code end */
+
+            /* fMarcosSvg code */
+
+                // add the svg canvas
+                var fMarcosSvg = d3.select('#chart9').append('svg')
+                    .attr('width', w)
+                    .attr('height', h)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                // place the tooltip
+                    d3.select('svg')
+                    .style('background-color', "#FAFAFA");
+                fMarcosSvg.call(tip);
+
+                // call the data
+                var fMarcosData = d3.json("data/data8_fMarcos.json", function(error, fMarcosData) {
+                    if (error) throw error;
+                        fMarcosData.forEach(function(d) { // make date format readable
+                            d.startDate = parseDate(d.startDate); 
+                            d.endDate = parseDate(d.endDate); 
+                            d.scale = parseDate(d.scale);
+                    });
+                    
+                    // define scale and axes
+                    var fMScale = d3.time.scale()
+                        .range([0, w - margin.left - margin.right])
+                        .domain(d3.extent(fMarcosData, function(d) { return d.scale; }));   // start date to last start date 
+                   
+                    var fMAxis = d3.svg.axis()
+                        .scale(fMScale)
+                        .orient("bottom")
+                        .ticks(20)
+                        .tickFormat(d3.time.format("%b-%Y"))
+                        .tickSize(4)
+                        .tickPadding(3); 
+
+                    // build the chart
+                    var chart = fMarcosSvg.selectAll('rect')
+                        .data(fMarcosData)
+                        .enter()
+                        .append('rect')
+                        .attr("width", function(d) {return fMScale(d.endDate) - fMScale(d.startDate);})
+                        .attr('height', 71)  
+                        .attr('y', h/2.7 - margin.top - margin.bottom) // centers circle
+                        .attr('x', function(d,i) { fMScale(d.startDate); return fMScale(d.startDate)} )
+                        .attr('rx', 150 + "px")
+                        .attr('ry', 0 + "px")
+                        .attr("opacity", 0.95)
+                        .style("fill", function(d) {
+                            if (colorRegion.Africa.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#edc951"; // yellow
+                            }
+                            else if (colorRegion.Asia.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#cc333f"; // red
+                            }
+                            else if (colorRegion.Europe.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#27a15a"; // green
+                            }
+                            else if (colorRegion.northAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#00a0b0"; // teal
+                            }
+                            else if (colorRegion.Oceania.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#eb6841"; // orange
+                            }
+                            else if (colorRegion.southAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#6a4a3c"; // brown
+                            }
+                            else {
+                                returnColor = "black";
+                            }
+                            return returnColor;
+                        })
+
+                    // add mouse events
+                        .on('mouseover', tip.show)
+                        .on("mouseout", tip.hide);
+
+                    // add the x axis
+                    fMarcosSvg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0, 72)")
+                        .call(fMAxis);
+                });
+
+            /* fMarcosSvg code end */
+
+            /* cAquinoSvg code */
+
+                // add the svg canvas
+                var cAquinoSvg = d3.select('#chart10').append('svg')
+                    .attr('width', w)
+                    .attr('height', h)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                // place the tooltip
+                    d3.select('svg')
+                    .style('background-color', "#FAFAFA");
+                cAquinoSvg.call(tip);
+
+                // call the data
+                var cAquinoData = d3.json("data/data9_cAquino.json", function(error, cAquinoData) {
+                    if (error) throw error;
+                        cAquinoData.forEach(function(d) { // make date format readable
+                            d.startDate = parseDate(d.startDate); 
+                            d.endDate = parseDate(d.endDate); 
+                            d.scale = parseDate(d.scale);
+                    });
+                    
+                    // define scale and axes
+                    var cAScale = d3.time.scale()
+                        .range([0, w - margin.left - margin.right])
+                        .domain(d3.extent(cAquinoData, function(d) { return d.scale; }));   // start date to last start date 
+                   
+                    var cAAxis = d3.svg.axis()
+                        .scale(cAScale)
+                        .orient("bottom")
+                        .ticks(20)
+                        .tickFormat(d3.time.format("%b-%Y"))
+                        .tickSize(4)
+                        .tickPadding(3); 
+
+                    // build the chart
+                    var chart = cAquinoSvg.selectAll('rect')
+                        .data(cAquinoData)
+                        .enter()
+                        .append('rect')
+                        .attr("width", function(d) {return cAScale(d.endDate) - cAScale(d.startDate);})
+                        .attr('height', 71)  
+                        .attr('y', h/2.7 - margin.top - margin.bottom) // centers circle
+                        .attr('x', function(d,i) { cAScale(d.startDate); return cAScale(d.startDate)} )
+                        .attr('rx', 150 + "px")
+                        .attr('ry', 0 + "px")
+                        .attr("opacity", 0.95)
+                        .style("fill", function(d) {
+                            if (colorRegion.Africa.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#edc951"; // yellow
+                            }
+                            else if (colorRegion.Asia.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#cc333f"; // red
+                            }
+                            else if (colorRegion.Europe.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#27a15a"; // green
+                            }
+                            else if (colorRegion.northAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#00a0b0"; // teal
+                            }
+                            else if (colorRegion.Oceania.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#eb6841"; // orange
+                            }
+                            else if (colorRegion.southAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#6a4a3c"; // brown
+                            }
+                            else {
+                                returnColor = "black";
+                            }
+                            return returnColor;
+                        })
+
+                    // add mouse events
+                        .on('mouseover', tip.show)
+                        .on("mouseout", tip.hide);
+
+                    // add the x axis
+                    cAquinoSvg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0, 72)")
+                        .call(cAAxis);
+                });
+
+            /* cAquinoSvg code end */
+
+            /* fRamosSvg code */
+
+                // add the svg canvas
+                var fRamosSvg = d3.select('#chart11').append('svg')
+                    .attr('width', w)
+                    .attr('height', h)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                // place the tooltip
+                    d3.select('svg')
+                    .style('background-color', "#FAFAFA");
+                fRamosSvg.call(tip);
+
+                // call the data
+                var fRamosData = d3.json("data/data10_fRamos.json", function(error, fRamosData) {
+                    if (error) throw error;
+                        fRamosData.forEach(function(d) { // make date format readable
+                            d.startDate = parseDate(d.startDate); 
+                            d.endDate = parseDate(d.endDate); 
+                            d.scale = parseDate(d.scale);
+                    });
+                    
+                    // define scale and axes
+                    var fRScale = d3.time.scale()
+                        .range([0, w - margin.left - margin.right])
+                        .domain(d3.extent(fRamosData, function(d) { return d.scale; }));   // start date to last start date 
+                   
+                    var fRAxis = d3.svg.axis()
+                        .scale(fRScale)
+                        .orient("bottom")
+                        .ticks(20)
+                        .tickFormat(d3.time.format("%b-%Y"))
+                        .tickSize(4)
+                        .tickPadding(3); 
+
+                    // build the chart
+                    var chart = fRamosSvg.selectAll('rect')
+                        .data(fRamosData)
+                        .enter()
+                        .append('rect')
+                        .attr("width", function(d) {return fRScale(d.endDate) - fRScale(d.startDate);})
+                        .attr('height', 71)  
+                        .attr('y', h/2.7 - margin.top - margin.bottom) // centers circle
+                        .attr('x', function(d,i) { fRScale(d.startDate); return fRScale(d.startDate)} )
+                        .attr('rx', 150 + "px")
+                        .attr('ry', 0 + "px")
+                        .attr("opacity", 0.95)
+                        .style("fill", function(d) {
+                            if (colorRegion.Africa.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#edc951"; // yellow
+                            }
+                            else if (colorRegion.Asia.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#cc333f"; // red
+                            }
+                            else if (colorRegion.Europe.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#27a15a"; // green
+                            }
+                            else if (colorRegion.northAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#00a0b0"; // teal
+                            }
+                            else if (colorRegion.Oceania.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#eb6841"; // orange
+                            }
+                            else if (colorRegion.southAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#6a4a3c"; // brown
+                            }
+                            else {
+                                returnColor = "black";
+                            }
+                            return returnColor;
+                        })
+
+                    // add mouse events
+                        .on('mouseover', tip.show)
+                        .on("mouseout", tip.hide);
+
+                    // add the x axis
+                    fRamosSvg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0, 72)")
+                        .call(fRAxis);
+                });
+
+            /* fRamosSvg code end */
+
+            /* jEstradaSvg code */
+
+                // add the svg canvas
+                var jEstradaSvg = d3.select('#chart12').append('svg')
+                    .attr('width', w)
+                    .attr('height', h)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                // place the tooltip
+                    d3.select('svg')
+                    .style('background-color', "#FAFAFA");
+                jEstradaSvg.call(tip);
+
+                // call the data
+                var jEstradaData = d3.json("data/data11_jEstrada.json", function(error, jEstradaData) {
+                    if (error) throw error;
+                        jEstradaData.forEach(function(d) { // make date format readable
+                            d.startDate = parseDate(d.startDate); 
+                            d.endDate = parseDate(d.endDate); 
+                            d.scale = parseDate(d.scale);
+                    });
+                    
+                    // define scale and axes
+                    var jEScale = d3.time.scale()
+                        .range([0, w - margin.left - margin.right])
+                        .domain(d3.extent(jEstradaData, function(d) { return d.scale; }));   // start date to last start date 
+                   
+                    var jEAxis = d3.svg.axis()
+                        .scale(jEScale)
+                        .orient("bottom")
+                        .ticks(20)
+                        .tickFormat(d3.time.format("%b-%Y"))
+                        .tickSize(4)
+                        .tickPadding(3); 
+
+                    // build the chart
+                    var chart = jEstradaSvg.selectAll('rect')
+                        .data(jEstradaData)
+                        .enter()
+                        .append('rect')
+                        .attr("width", function(d) {return jEScale(d.endDate) - jEScale(d.startDate);})
+                        .attr('height', 71)  
+                        .attr('y', h/2.7 - margin.top - margin.bottom) // centers circle
+                        .attr('x', function(d,i) { jEScale(d.startDate); return jEScale(d.startDate)} )
+                        .attr('rx', 150 + "px")
+                        .attr('ry', 0 + "px")
+                        .attr("opacity", 0.95)
+                        .style("fill", function(d) {
+                            if (colorRegion.Africa.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#edc951"; // yellow
+                            }
+                            else if (colorRegion.Asia.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#cc333f"; // red
+                            }
+                            else if (colorRegion.Europe.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#27a15a"; // green
+                            }
+                            else if (colorRegion.northAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#00a0b0"; // teal
+                            }
+                            else if (colorRegion.Oceania.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#eb6841"; // orange
+                            }
+                            else if (colorRegion.southAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#6a4a3c"; // brown
+                            }
+                            else {
+                                returnColor = "black";
+                            }
+                            return returnColor;
+                        })
+
+                    // add mouse events
+                        .on('mouseover', tip.show)
+                        .on("mouseout", tip.hide);
+
+                    // add the x axis
+                    jEstradaSvg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0, 72)")
+                        .call(jEAxis);
+                });
+
+            /* jEstradaSvg code end */
+
+            /* gArroyoSvg code */
+
+                // add the svg canvas
+                var gArroyoSvg = d3.select('#chart13').append('svg')
+                    .attr('width', w)
+                    .attr('height', h)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                // place the tooltip
+                    d3.select('svg')
+                    .style('background-color', "#FAFAFA");
+                gArroyoSvg.call(tip);
+
+                // call the data
+                var gArroyoData = d3.json("data/data12_gArroyo.json", function(error, gArroyoData) {
+                    if (error) throw error;
+                        gArroyoData.forEach(function(d) { // make date format readable
+                            d.startDate = parseDate(d.startDate); 
+                            d.endDate = parseDate(d.endDate); 
+                            d.scale = parseDate(d.scale);
+                    });
+                    
+                    // define scale and axes
+                    var gAScale = d3.time.scale()
+                        .range([0, w - margin.left - margin.right])
+                        .domain(d3.extent(gArroyoData, function(d) { return d.scale; }));   // start date to last start date 
+                   
+                    var gAAxis = d3.svg.axis()
+                        .scale(gAScale)
+                        .orient("bottom")
+                        .ticks(20)
+                        .tickFormat(d3.time.format("%b-%Y"))
+                        .tickSize(4)
+                        .tickPadding(3); 
+
+                    // build the chart
+                    var chart = gArroyoSvg.selectAll('rect')
+                        .data(gArroyoData)
+                        .enter()
+                        .append('rect')
+                        .attr("width", function(d) {return gAScale(d.endDate) - gAScale(d.startDate);})
+                        .attr('height', 71)  
+                        .attr('y', h/2.7 - margin.top - margin.bottom) // centers circle
+                        .attr('x', function(d,i) { gAScale(d.startDate); return gAScale(d.startDate)} )
+                        .attr('rx', 150 + "px")
+                        .attr('ry', 0 + "px")
+                        .attr("opacity", 0.95)
+                        .style("fill", function(d) {
+                            if (colorRegion.Africa.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#edc951"; // yellow
+                            }
+                            else if (colorRegion.Asia.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#cc333f"; // red
+                            }
+                            else if (colorRegion.Europe.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#27a15a"; // green
+                            }
+                            else if (colorRegion.northAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#00a0b0"; // teal
+                            }
+                            else if (colorRegion.Oceania.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#eb6841"; // orange
+                            }
+                            else if (colorRegion.southAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#6a4a3c"; // brown
+                            }
+                            else {
+                                returnColor = "black";
+                            }
+                            return returnColor;
+                        })
+
+                    // add mouse events
+                        .on('mouseover', tip.show)
+                        .on("mouseout", tip.hide);
+
+                    // add the x axis
+                    gArroyoSvg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0, 72)")
+                        .call(gAAxis);
+                });
+
+            /* gArroyoSvg code end */
+
+            /* bAquinoSvg code */
+
+                // add the svg canvas
+                var bAquinoSvg = d3.select('#chart14').append('svg')
+                    .attr('width', w)
+                    .attr('height', h)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                // place the tooltip
+                    d3.select('svg')
+                    .style('background-color', "#FAFAFA");
+                bAquinoSvg.call(tip);
+
+                // call the data
+                var bAquinoData = d3.json("data/data13_bAquino.json", function(error, bAquinoData) {
+                    if (error) throw error;
+                        bAquinoData.forEach(function(d) { // make date format readable
+                            d.startDate = parseDate(d.startDate); 
+                            d.endDate = parseDate(d.endDate); 
+                            d.scale = parseDate(d.scale);
+                    });
+                    
+                    // define scale and axes
+                    var bAScale = d3.time.scale()
+                        .range([0, w - margin.left - margin.right])
+                        .domain(d3.extent(bAquinoData, function(d) { return d.scale; }));   // start date to last start date 
+                   
+                    var bAAxis = d3.svg.axis()
+                        .scale(bAScale)
+                        .orient("bottom")
+                        .ticks(20)
+                        .tickFormat(d3.time.format("%b-%Y"))
+                        .tickSize(4)
+                        .tickPadding(3); 
+
+                    // build the chart
+                    var chart = bAquinoSvg.selectAll('rect')
+                        .data(bAquinoData)
+                        .enter()
+                        .append('rect')
+                        .attr("width", function(d) {return bAScale(d.endDate) - bAScale(d.startDate);})
+                        .attr('height', 71)  
+                        .attr('y', h/2.7 - margin.top - margin.bottom) // centers circle
+                        .attr('x', function(d,i) { bAScale(d.startDate); return bAScale(d.startDate)} )
+                        .attr('rx', 150 + "px")
+                        .attr('ry', 0 + "px")
+                        .attr("opacity", 0.95)
+                        .style("fill", function(d) {
+                            if (colorRegion.Africa.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#edc951"; // yellow
+                            }
+                            else if (colorRegion.Asia.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#cc333f"; // red
+                            }
+                            else if (colorRegion.Europe.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#27a15a"; // green
+                            }
+                            else if (colorRegion.northAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#00a0b0"; // teal
+                            }
+                            else if (colorRegion.Oceania.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#eb6841"; // orange
+                            }
+                            else if (colorRegion.southAmerica.indexOf(d.visitCountry) !== -1) {
+                                returnColor = "#6a4a3c"; // brown
+                            }
+                            else {
+                                returnColor = "black";
+                            }
+                            return returnColor;
+                        })
+
+                    // add mouse events
+                        .on('mouseover', tip.show)
+                        .on("mouseout", tip.hide);
+
+                    // add the x axis
+                    bAquinoSvg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0, 72)")
+                        .call(bAAxis);
+                });
+
+            /* bAquinoSvg code end */
+        </script>
+    </body>
+</html>

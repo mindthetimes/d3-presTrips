@@ -1,0 +1,90 @@
+[
+   {
+    "presName":"Elpidio Quirino",
+    "startDate":"8-Aug-1949",
+    "endDate":"18-Aug-1949",
+    "visitDuration":10,
+    "visitCountry":"USA",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":"18-Apr-1948"
+  },
+  {
+    "presName":"Elpidio Quirino",
+    "startDate":"7-Jan-1950",
+    "endDate":"15-Feb-1950",
+    "visitDuration":39,
+    "visitCountry":"USA",
+    "visitPurpose":"Private Visit",
+    "visitDetails":"Medical Treatment",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Elpidio Quirino",
+    "startDate":"22-May-1951",
+    "endDate":"23-May-1951",
+    "visitDuration":1,
+    "visitCountry":"North Borneo",
+    "visitPurpose":"State Visit",
+    "visitDetails":"",
+    "visitNotes":"only single date available",
+    "scale":""
+  },
+  {
+    "presName":"Elpidio Quirino",
+    "startDate":"27-Aug-1951",
+    "endDate":"25-Sep-1951",
+    "visitDuration":29,
+    "visitCountry":"USA",
+    "visitPurpose":"Official Mission",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Elpidio Quirino",
+    "startDate":"1-Oct-1951",
+    "endDate":"8-Oct-1951",
+    "visitDuration":7,
+    "visitCountry":"Spain",
+    "visitPurpose":"State Visit",
+    "visitDetails":"Invitation",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Elpidio Quirino",
+    "startDate":"8-Oct-1951",
+    "endDate":"11-Oct-1951",
+    "visitDuration":3,
+    "visitCountry":"Italy",
+    "visitPurpose":"Official Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Elpidio Quirino",
+    "startDate":"17-Jul-1952",
+    "endDate":"27-Jul-1952",
+    "visitDuration":10,
+    "visitCountry":"Indonesia",
+    "visitPurpose":"Official Visit",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Elpidio Quirino",
+    "startDate":"27-Jun-1953",
+    "endDate":"7-Sep-1953",
+    "visitDuration":72,
+    "visitCountry":"USA",
+    "visitPurpose":"Private Visit",
+    "visitDetails":"Medical Treatment",
+    "visitNotes":"",
+    "scale":"30-Dec-1953"
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "presName":"Sergio Osmena",
+    "startDate":"2-Oct-1944",
+    "endDate":"3-Oct-1944",
+    "visitDuration":1,
+    "visitCountry":"USA",
+    "visitPurpose":"Official Visit",
+    "visitDetails":"Conferred with President Roosevelt at the White House",
+    "visitNotes":"",
+    "scale":"1-Aug-1944"
+  },
+  {
+    "presName":"Sergio Osmena",
+    "startDate":"9-Jan-1945",
+    "endDate":"28-Feb-1945",
+    "visitDuration":50,
+    "visitCountry":"USA",
+    "visitPurpose":"Private Visit ",
+    "visitDetails":"Medical Treatment",
+    "visitNotes":"no data on exact end date",
+    "scale":""
+  },
+  {
+    "presName":"Sergio Osmena",
+    "startDate":"12-Mar-1945",
+    "endDate":"23-May-1945",
+    "visitDuration":72,
+    "visitCountry":"USA",
+    "visitPurpose":"Private Visit",
+    "visitDetails":"Medical Treatment",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Sergio Osmena",
+    "startDate":"1-Sep-1945",
+    "endDate":"21-Nov-1945",
+    "visitDuration":81,
+    "visitCountry":"USA",
+    "visitPurpose":"Summit ",
+    "visitDetails":"Conference",
+    "visitNotes":"no data on exact start date",
+    "scale":"28-May-1946"
+  }
+]

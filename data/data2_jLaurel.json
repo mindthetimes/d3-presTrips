@@ -1,0 +1,46 @@
+[
+    {
+    "presName":"Jose Laurel",
+    "startDate":"5-Nov-1943",
+    "endDate":"13-Nov-1943",
+    "visitDuration":8,
+    "visitCountry":"Japan",
+    "visitPurpose":"Summit ",
+    "visitDetails":"Greater East Asia Conference",
+    "visitNotes":"",
+    "scale":"14-Oct-1943"
+  },
+  {
+    "presName":"Jose Laurel",
+    "startDate":"31-Mar-1945",
+    "endDate":"6-Jun-1945",
+    "visitDuration":67,
+    "visitCountry":"Taiwan",
+    "visitPurpose":"Enroute to China",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Jose Laurel",
+    "startDate":"6-Jun-1945",
+    "endDate":"9-Jun-1945",
+    "visitDuration":3,
+    "visitCountry":"China",
+    "visitPurpose":"Enroute to Japan",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":""
+  },
+  {
+    "presName":"Jose Laurel",
+    "startDate":"9-Jun-1945",
+    "endDate":"23-Jul-1946",
+    "visitDuration":409,
+    "visitCountry":"Japan",
+    "visitPurpose":"Dissolved the Japanese-sponsored Philippine Republic",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":"23-Jul-1946"
+  }
+]

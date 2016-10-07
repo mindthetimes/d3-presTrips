@@ -1,0 +1,24 @@
+[
+  {
+    "presName":"Manuel Roxas",
+    "startDate":"9-May-1946",
+    "endDate":"10-May-1946",
+    "visitDuration":1,
+    "visitCountry":"USA",
+    "visitPurpose":"Official Visit",
+    "visitDetails":"as President-Elect",
+    "visitNotes":"only single date available",
+    "scale":"9-May-1946"
+  },
+  {
+    "presName":"Manuel Roxas",
+    "startDate":"",
+    "endDate":"",
+    "visitDuration":null,
+    "visitCountry":"",
+    "visitPurpose":"",
+    "visitDetails":"",
+    "visitNotes":"",
+    "scale":"15-Apr-1948"
+  }
+]
